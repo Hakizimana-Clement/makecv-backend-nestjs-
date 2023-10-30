@@ -71,3 +71,12 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## out of this scope
+
+step 1
+
+```bash
+
+mongod --dbpath "C:\Program Files\MongoDB\Server\6.0\data" --logappend --port 27017  --storageEngine=wiredTiger --journal --replSet testrap
+```
