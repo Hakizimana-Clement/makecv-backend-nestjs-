@@ -20,12 +20,10 @@ export class AuthService {
         data: { email: dto.email, hash },
       });
       // return user
-      return this.signToken(parseInt(user.id), user.email);
+      return this.signToken(user.id, user.email);
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
-        if (error.code === 'P2002') {
-          throw new ForbiddenException('Credentials taken');
-        }
+        throw new ForbiddenException('Credentials taken');
       }
       throw error;
     }
@@ -45,18 +43,34 @@ export class AuthService {
     if (!PwMatches) throw new ForbiddenException('Credentials incorrect');
 
     // return user
-    return this.signToken(+user.id, user.email);
+    // console.log(user.id, user.email);
+    // console.log(user.id);
+    // console.log(typeof parseInt(user.id));
+    // console.log(parseInt(user.id));
+
+    // return this.signToken(parseInt(user.id), user.email);
+
+    return this.signToken(user.id, user.email);
   }
 
-  async signToken(userId: number, email: string): Promise<string> {
+  async signToken(
+    userId: string,
+    email: string,
+  ): Promise<{ access_token: string }> {
     const payload = {
       sub: userId,
       email,
     };
+
     const secret = this.config.get('JWT_SECRET');
-    return this.jwt.signAsync(payload, {
+
+    const token = await this.jwt.signAsync(payload, {
       expiresIn: '15m',
       secret: secret,
     });
+
+    return {
+      access_token: token,
+    };
   }
 }
