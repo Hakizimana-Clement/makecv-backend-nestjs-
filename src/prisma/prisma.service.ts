@@ -8,7 +8,6 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          // url: 'mongodb://127.0.0.1:27020/curriculumVitaeDB?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1',
           url: config.get('DATABASE_URL'),
         },
       },
