@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        Int   @id @default(auto()) @map("_id") @db.ObjectId
   CreatedAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
