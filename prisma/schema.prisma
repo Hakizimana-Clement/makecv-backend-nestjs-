@@ -30,6 +30,7 @@ model CurriculumVitae {
 
   fullName                  String
   email                     String
+  location                  String
   personalStatement         String
   educationAndQualification String
   skills                    String

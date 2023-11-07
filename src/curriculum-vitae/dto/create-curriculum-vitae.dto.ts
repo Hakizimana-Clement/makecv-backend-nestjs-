@@ -15,10 +15,14 @@ export class CreateCurriculumVitaeDto {
   @IsNotEmpty()
   email: string;
 
-  // @IsString()
-  // @IsInt()
+  @IsString()
+  @IsNotEmpty()
+  location: string;
+
+  // // @IsString()
+  // // @IsInt()
   // @IsNotEmpty()
-  // phone: string;
+  // phone: number;
 
   @IsString()
   @IsNotEmpty()

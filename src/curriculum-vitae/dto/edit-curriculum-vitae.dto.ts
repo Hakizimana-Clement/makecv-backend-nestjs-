@@ -9,9 +9,13 @@ export class EditCurriculumVitaeDto {
   @IsNotEmpty()
   email?: string;
 
-  // @IsInt()
+  @IsString()
+  @IsNotEmpty()
+  location: string;
+
+  // // @IsInt()
   // @IsNotEmpty()
-  // phone?: string;
+  // phone?: number;
 
   @IsString()
   @IsNotEmpty()
