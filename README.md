@@ -252,3 +252,12 @@ npx prisma db push
 # Run this to open database in browser
 npx prisma studio
 ```
+
+### 3.4. Swagger api
+
+To run API document run port and add endpoint of _/api_
+
+```http
+
+http://localhost:3333/api
+```

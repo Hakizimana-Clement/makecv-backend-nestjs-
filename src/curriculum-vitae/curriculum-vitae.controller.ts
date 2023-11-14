@@ -6,27 +6,35 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  ParseIntPipe,
   Patch,
   Post,
   UseGuards,
 } from '@nestjs/common';
-// import { JwtGuard } from '../../src/auth/guard';
-// import { CurriculumVitaeService } from './curriculum-vitae.service';
-// import { JwtGuard } from 'src/auth/guard';
-// import { GetUser } from '../../src/auth/decorator';
-// import { GetUser } from 'src/auth/decorator';
+
+import {
+  ApiBearerAuth,
+  ApiHeader,
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
+} from '@nestjs/swagger';
+
 import { CurriculumVitaeService } from './curriculum-vitae.service';
 import { GetUser } from 'src/auth/decorator';
 import { JwtGuard } from 'src/auth/guard';
 import { CreateCurriculumVitaeDto, EditCurriculumVitaeDto } from './dto';
+import { ApiTags, ApiSecurity } from '@nestjs/swagger';
 
+@ApiTags('CV')
 @UseGuards(JwtGuard)
 @Controller('curriculum-vitaes')
 export class CurriculumVitaeController {
   constructor(private curriculumVitaeService: CurriculumVitaeService) {}
 
   @Get()
+  @ApiCreatedResponse({
+    description: 'Created user object as response',
+  })
+  @ApiBearerAuth('Authorization')
   getCurriculumVitaes(@GetUser('id') userId: string) {
     return this.curriculumVitaeService.getCurriculumVitaes(userId);
   }
