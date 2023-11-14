@@ -8,9 +8,6 @@
   "scripts": {
 
 "prisma:test:deploy":"npx prisma migrate && dotenv -e .env.test --  npx prisma db push",
-"db:test:rm":"",
-
-
 
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
